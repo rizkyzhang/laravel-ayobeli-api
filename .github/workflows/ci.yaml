@@ -28,6 +28,9 @@ jobs:
 
   install_dependencies:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: /home/runner/work/laravel-ci-cd
     needs: setup
     steps:
       - name: Cache Composer dependencies
