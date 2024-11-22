@@ -86,14 +86,14 @@ jobs:
 
   run_static_analysis:
     runs-on: ubuntu-latest
-    needs: run_static_analysis
+    needs: check_code_style
     steps:
       - name: Run static analysis
         run: vendor/bin/phpstan analyse
 
   check_security:
     runs-on: ubuntu-latest
-    needs: check_security
+    needs: run_static_analysis
     steps:
       - name: Check for security vulnerabilities
         run: composer require --dev enlightn/security-checker && vendor/bin/security-checker security:check
