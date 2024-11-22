@@ -1,0 +1,99 @@
+name: Laravel CI
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+      - feature/*
+  pull_request:
+    branches:
+      - main
+      - develop
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.2
+          extensions: mbstring, pdo, pdo_mysql, bcmath
+          ini-values: post_max_size=256M, upload_max_filesize=256M
+          coverage: none
+
+  install_dependencies:
+    runs-on: ubuntu-latest
+    needs: setup
+    steps:
+      - name: Cache Composer dependencies
+        uses: actions/cache@v2
+        with:
+          path: vendor
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-composer-
+
+      - name: Install Composer dependencies
+        run: composer install --no-progress --no-suggest --prefer-dist --optimize-autoloader
+
+      - name: Copy .env file
+        run: cp .env.example .env
+
+      - name: Generate application key
+        run: php artisan key:generate
+
+  setup_database:
+    runs-on: ubuntu-latest
+    needs: install_dependencies
+    services:
+      mysql:
+        image: mysql:8.4
+        env:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: laravel_ci_cd
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping --silent"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=3
+    steps:
+      - name: Wait for MySQL to be ready
+        run: sudo apt-get install -y netcat && while ! nc -z localhost 3306; do sleep 1; done
+
+      - name: Run database migrations
+        run: php artisan migrate --force
+
+  run_tests:
+    runs-on: ubuntu-latest
+    needs: setup_database
+    steps:
+      - name: Run tests
+        run: php artisan test
+
+  check_code_style:
+    runs-on: ubuntu-latest
+    needs: run_tests
+    steps:
+      - name: Check code style
+        run: vendor/bin/php-cs-fixer fix --dry-run --diff
+
+  run_static_analysis:
+    runs-on: ubuntu-latest
+    needs: run_static_analysis
+    steps:
+      - name: Run static analysis
+        run: vendor/bin/phpstan analyse
+
+  check_security:
+    runs-on: ubuntu-latest
+    needs: check_security
+    steps:
+      - name: Check for security vulnerabilities
+        run: composer require --dev enlightn/security-checker && vendor/bin/security-checker security:check

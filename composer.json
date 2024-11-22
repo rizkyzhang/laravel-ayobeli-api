@@ -14,8 +14,7 @@
         "laravel/tinker": "^2.9",
         "owen-it/laravel-auditing": "^13.6",
         "torann/geoip": "^3.0",
-        "ext-sodium": "*",
-        "ext-decimal": "*"
+        "ext-sodium": "*"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
