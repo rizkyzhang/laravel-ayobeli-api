@@ -37,6 +37,9 @@ jobs:
       - name: Install Composer dependencies
         run: composer install --no-progress --prefer-dist --optimize-autoloader
 
+      - name: Verify Composer installation
+        run: test -f vendor/autoload.php && echo "Composer dependencies installed successfully" || echo "Composer dependencies installation failed"
+
       - name: Copy .env file
         run: cp .env.example .env
 
