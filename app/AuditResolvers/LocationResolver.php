@@ -2,6 +2,7 @@
 
 namespace App\AuditResolvers;
 
+use Exception;
 use GeoIp2\Database\Reader;
 use GeoIp2\Exception\AddressNotFoundException;
 use Illuminate\Support\Facades\Request;
@@ -10,7 +11,6 @@ use OwenIt\Auditing\Contracts\Auditable;
 use OwenIt\Auditing\Contracts\Resolver;
 
 require_once(realpath("geoip/geoip2.phar"));
-
 
 /**
  * Class LocationResolver
@@ -27,11 +27,14 @@ class LocationResolver implements Resolver
      */
     public static function resolve(Auditable $auditable): string
     {
-        $dbPath = realpath("geoip/GeoLite2-Country.mmdb");
+        $dbPath = (string)realpath("geoip/GeoLite2-Country.mmdb");
         try {
             $reader = new Reader($dbPath);
-            $record = $reader->country(Request::ip());
-            return $record->city->name . ", " . $record->country->name;
+            $record = $reader->country((string)Request::ip());
+            $cityName = $record->city->name ?? 'Unknown City';
+            $countryName = $record->country->name ?? 'Unknown Country';
+
+            return $cityName . ", " . $countryName;
         } catch (AddressNotFoundException $e) {
             return "Address not found";
         } catch (InvalidDatabaseException $e) {

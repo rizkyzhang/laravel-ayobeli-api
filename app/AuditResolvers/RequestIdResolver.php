@@ -11,6 +11,8 @@ class RequestIdResolver implements Resolver
 {
     public static function resolve(Auditable $auditable): string
     {
-      return Request::header('X-Request-ID') ?? (string) Str::ulid();
+        $requestId = Request::header('X-Request-ID');
+        
+        return is_array($requestId) ? (string)Str::ulid() : ($requestId ?? (string)Str::ulid());
     }
 }
