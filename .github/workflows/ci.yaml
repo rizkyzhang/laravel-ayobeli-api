@@ -3,12 +3,6 @@ name: Laravel CI
 on:
   push:
     branches:
-      - main
-      - develop
-      - feature/*
-  pull_request:
-    branches:
-      - main
       - develop
 
 jobs:
@@ -74,6 +68,9 @@ jobs:
           key: ${{ secrets.SERVER_KEY }}
           port: ${{ secrets.SERVER_PORT }}
           script: |
+            cd Projects/personal/laravel-ci-cd
+            git checkout develop
+            git pull
             echo "Start container"
             docker stop ${{ secrets.DOCKER_CONTAINER_NAME }} || true && docker rm ${{ secrets.DOCKER_CONTAINER_NAME }} || true
             DOPPLER_STAGING_TOKEN=${{ secrets.DOPPLER_STAGING_TOKEN }} docker compose -f docker/docker-compose.yaml up --build -d
