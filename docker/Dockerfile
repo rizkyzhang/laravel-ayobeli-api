@@ -6,9 +6,11 @@ WORKDIR /var/www
 
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
+    apt-transport-https\
     build-essential \
+    ca-certificates \
     curl \
-    gnupg2 \
+    gnupg \
     unzip \
     zip
 
@@ -22,7 +24,7 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 COPY . /var/www
 
 # Install PHP dependencies
-RUN composer install --no-dev --optimize-autoloader
+RUN composer install --no-dev --no-progress --optimize-autoloader --prefer-dist
 
 # Stage 2: Create the final image
 FROM php:8.2-fpm

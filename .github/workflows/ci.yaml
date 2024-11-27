@@ -74,8 +74,6 @@ jobs:
             echo "Start container"
             docker stop ${{ secrets.DOCKER_CONTAINER_NAME }} || true && docker rm ${{ secrets.DOCKER_CONTAINER_NAME }} || true
             DOPPLER_STAGING_TOKEN=${{ secrets.DOPPLER_STAGING_TOKEN }} docker compose -f docker/docker-compose.yaml up --build -d
-            echo "Composer install"
-            docker exec ${{ secrets.DOCKER_CONTAINER_NAME }} composer install --no-dev --no-progress --prefer-dist --optimize-autoloader
             echo "Run migrations"
             docker exec ${{ secrets.DOCKER_CONTAINER_NAME }} php artisan migrate
             echo "Optimize application"
