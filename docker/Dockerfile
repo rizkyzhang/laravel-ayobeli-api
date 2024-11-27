@@ -38,7 +38,7 @@ FROM php:8.2-fpm
 WORKDIR /var/www
 
 # Copy Doppler binary from the build stage
-COPY --from=build /usr/local/bin/doppler /usr/local/bin/doppler
+COPY --from=build /usr/bin/doppler /usr/bin/doppler
 
 # Copy PHP extensions from the build stage
 COPY --from=build /usr/local/lib/php/extensions /usr/local/lib/php/extensions
