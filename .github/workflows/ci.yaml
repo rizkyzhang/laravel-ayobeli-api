@@ -72,7 +72,7 @@ jobs:
             git checkout develop
             git pull
             echo "Compose down"
-            docker compose down
+            docker compose -f docker/docker-compose.yaml down
             echo "Compose up"
             DOPPLER_STAGING_TOKEN=${{ secrets.DOPPLER_STAGING_TOKEN }} docker compose -f docker/docker-compose.yaml up --build -d
             echo "Run migrations"
