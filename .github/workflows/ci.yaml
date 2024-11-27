@@ -74,9 +74,9 @@ jobs:
             echo "Compose down"
             docker compose -f docker/docker-compose.yaml down
             echo "Compose up"
-            DOPPLER_STAGING_TOKEN=${{ secrets.DOPPLER_STAGING_TOKEN }} docker compose -f docker/docker-compose.yaml up --build -d
+            DOPPLER_STAGING_TOKEN=${{ secrets.DOPPLER_STAGING_TOKEN }} docker compose -f docker/docker-compose.yaml up --build -d --remove-orphans
             echo "Run migrations"
-            docker exec ${{ secrets.DOCKER_CONTAINER_NAME }} sh -c php artisan migrate
+            docker exec ${{ secrets.DOCKER_CONTAINER_NAME }} php artisan migrate
             echo "Optimize application"
-            docker exec ${{ secrets.DOCKER_CONTAINER_NAME }}  php artisan config:cache && php artisan route:cache && php artisan view:cache && php artisan optimize
+            docker exec ${{ secrets.DOCKER_CONTAINER_NAME }} php artisan config:cache && php artisan route:cache && php artisan view:cache && php artisan optimize
 
