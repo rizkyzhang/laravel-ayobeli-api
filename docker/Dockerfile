@@ -8,6 +8,7 @@ WORKDIR /var/www
 RUN apt-get update && apt-get install -y \
     build-essential \
     curl \
+    gnupg2 \
     unzip \
     zip
 
