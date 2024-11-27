@@ -29,7 +29,7 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 COPY . /var/www
 
 # Install PHP dependencies
-RUN composer install --no-dev --no-progress --optimize-autoloader --prefer-dist
+RUN composer install --no-dev --no-progress --optimize-autoloader
 
 ## Stage 2: Create the final image
 #FROM php:8.2-fpm
