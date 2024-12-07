@@ -64,22 +64,23 @@ jobs:
       - name: Deploy to ${{ inputs.environment }}
         if: ${{ inputs.environment == 'staging' || inputs.environment == 'production' }}
         uses: appleboy/ssh-action@master
-        env:
-          DOPPLER_TOKEN: ${{ secrets.DOPPLER_STAGING_TOKEN }}
-          DOCKER_CONTAINER_NAME: ${{ secrets.DOCKER_CONTAINER_NAME }}
+        # env:
+        #   DOPPLER_TOKEN: ${{ secrets.DOPPLER_STAGING_TOKEN }}
+        #   DOCKER_CONTAINER_NAME: ${{ secrets.DOCKER_CONTAINER_NAME }}
         with:
           host: ${{ secrets.SERVER_HOST }}
           username: ${{ secrets.SERVER_USER }}
           passphrase: ${{ secrets.SERVER_PASSPHRASE }}
           key: ${{ secrets.SERVER_KEY }}
           port: ${{ secrets.SERVER_PORT }}
-          script: |
-            cd Projects/personal/laravel-ci-cd
-            if [ "${{ inputs.environment }}" == "staging" ]; then
-              echo "Deploying to Staging..."
-              ./deploy-to-staging.sh
-            elif [ "${{ inputs.environment }}" == "production" ]; then
-              echo "Deploying to Production..."
-              ./deploy-to-prod.sh
-            fi
-
+        script:
+          echo "Test"
+          # script: |
+          #   cd Projects/personal/laravel-ci-cd
+          #   if [ "${{ inputs.environment }}" == "staging" ]; then
+          #     echo "Deploying to Staging..."
+          #     ./deploy-to-staging.sh
+          #   elif [ "${{ inputs.environment }}" == "production" ]; then
+          #     echo "Deploying to Production..."
+          #     ./deploy-to-prod.sh
+          #   fi
