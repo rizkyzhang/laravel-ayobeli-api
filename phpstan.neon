@@ -1,0 +1,7 @@
+parameters:
+    level: max
+    bootstrapFiles:
+        - geoip/geoip2.phar
+    paths:
+        - app/AuditResolvers
+
