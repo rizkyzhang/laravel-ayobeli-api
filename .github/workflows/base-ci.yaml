@@ -70,4 +70,5 @@ jobs:
           passphrase: ${{ secrets.SERVER_PASSPHRASE }}
           key: ${{ secrets.SERVER_KEY }}
           port: ${{ secrets.SERVER_PORT }}
-        script: echo "Test"
+        script: |
+          echo "test"
