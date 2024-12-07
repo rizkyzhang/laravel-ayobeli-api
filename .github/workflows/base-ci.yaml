@@ -1,9 +1,11 @@
 name: Base CI/CD Pipeline
 
 on:
-  push:
-    branches:
-      - develop
+  workflow_call: # This allows the workflow to be reused by other workflows
+    inputs:
+      environment:
+        required: true
+        type: string
 
 jobs:
   ci:
