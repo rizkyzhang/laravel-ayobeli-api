@@ -71,14 +71,4 @@ jobs:
           key: ${{ secrets.SERVER_KEY }}
           port: ${{ secrets.SERVER_PORT }}
           script: |
-            export DOPPLER_TOKEN="${{ secrets.DOPPLER_STAGING_TOKEN }}"
-            export DOCKER_CONTAINER_NAME="${{ secrets.DOCKER_CONTAINER_NAME }}"
-
-            cd Projects/personal/laravel-ci-cd
-            if [ "${{ inputs.environment }}" == "staging" ]; then
-              echo "Deploying to Staging..."
-              ./deploy-to-staging.sh
-            elif [ "${{ inputs.environment }}" == "production" ]; then
-              echo "Deploying to Production..."
-              ./deploy-to-prod.sh
-            fi
+            echo "Test"
