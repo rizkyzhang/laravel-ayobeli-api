@@ -61,10 +61,6 @@ jobs:
       - name: Run tests
         run: php artisan test || true
 
-        # env:
-        #   DOPPLER_TOKEN: ${{ secrets.DOPPLER_STAGING_TOKEN }}
-        #   DOCKER_CONTAINER_NAME: ${{ secrets.DOCKER_CONTAINER_NAME }}
-
       - name: Deploy to ${{ inputs.environment }}
         if: ${{ inputs.environment == 'staging' || inputs.environment == 'production' }}
         uses: appleboy/ssh-action@master
@@ -77,7 +73,7 @@ jobs:
           script: |
             export DOPPLER_TOKEN="${{ secrets.DOPPLER_STAGING_TOKEN }}"
             export DOCKER_CONTAINER_NAME="${{ secrets.DOCKER_CONTAINER_NAME }}"
-            
+
             cd Projects/personal/laravel-ci-cd
             if [ "${{ inputs.environment }}" == "staging" ]; then
               echo "Deploying to Staging..."
