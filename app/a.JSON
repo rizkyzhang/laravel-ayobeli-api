@@ -1,0 +1,130 @@
+{
+    "id": "APF-70017-00207",
+    "sku": "APF-70017-00207",
+    "merchantCode": "APF-70017",
+    "status": "AVAILABLE",
+    "name": "iPad (generasi ke-10)",
+    "price": {
+        "priceDisplay": "Rp5.839.000",
+        "strikeThroughPriceDisplay": "Rp8.499.000",
+        "discount": 31,
+        "discountPrice": 2660000,
+        "minPrice": 5839000,
+        "offerPriceDisplay": "Rp6.589.000",
+        "isPriceRange": false
+    },
+    "images": [
+        "https://www.static-src.com/wcsstore/Indraprastha/images/catalog/medium/catalog-image/MTA-80677074/apple_ipad_-generasi_ke-10-_full01_jpkhlsn6.jpg",
+        "https://www.static-src.com/wcsstore/Indraprastha/images/catalog/medium/MTA-80677074/apple_ipad_-generasi_ke-10-_full56_yf6j9iq.jpeg",
+        "https://www.static-src.com/wcsstore/Indraprastha/images/catalog/medium/MTA-80677074/apple_ipad_-generasi_ke-10-_full09_p0rm5cqi.jpeg",
+        "https://www.static-src.com/wcsstore/Indraprastha/images/catalog/medium/MTA-80677074/apple_ipad_-generasi_ke-10-_full10_ozkur96s.jpeg",
+        "https://www.static-src.com/wcsstore/Indraprastha/images/catalog/medium/MTA-80677074/apple_ipad_-generasi_ke-10-_full11_h7fbictn.jpeg",
+        "https://www.static-src.com/wcsstore/Indraprastha/images/catalog/medium/MTA-80677074/apple_ipad_-generasi_ke-10-_full12_dq0bveag.jpeg",
+        "https://www.static-src.com/wcsstore/Indraprastha/images/catalog/medium/MTA-80677074/apple_ipad_-generasi_ke-10-_full13_vlvweg8m.jpeg",
+        "https://www.static-src.com/wcsstore/Indraprastha/images/catalog/medium/MTA-80677074/apple_ipad_-generasi_ke-10-_full14_ncqthlk9.jpeg",
+        "https://www.static-src.com/wcsstore/Indraprastha/images/catalog/medium/MTA-80677074/apple_ipad_-generasi_ke-10-_full16_jk0x99ip.jpeg"
+    ],
+    "rootCategory": {
+        "id": "54593",
+        "name": "Handphone & Tablet"
+    },
+    "brand": "Apple",
+    "review": {
+        "rating": 4,
+        "count": 225,
+        "absoluteRating": 4.9,
+        "sellerRating": 4.9,
+        "isNewSeller": false
+    },
+    "itemCount": 21,
+    "defaultSku": "APF-70017-00207-00002-PP-3527678",
+    "itemSku": "APF-70017-00207-00002",
+    "tags": [
+        "ZERO_PERCENT_INSTALLMENT",
+        "REGULAR",
+        "BLIBLI_SHIPPING",
+        "FLASH_SALE_CAMPAIGN",
+        "BEST_SELLING",
+        "TUKAR_TAMBAH",
+        "FREE_SHIPPING"
+    ],
+    "formattedId": "ps--APF-70017-00207",
+    "url": "/p/ipad-generasi-ke-10/ps--APF-70017-00207?ds=APF-70017-00207-00002&source=SEARCH&sid=5c9edb51918d54f4&metaData=SnHZRCX7NPLsJ+ExPEFNC0Io8iY7bS3QFgUrrRjl8b92i1dhLLtnpXPtEezDexRrWwh/82RD0QCUoaqSaK03cbLBaB3tLseqCRU/10V6Qi4m/0gcuiAdTNyGqjLqLXjMFC7dsv3v+v8kprC1X6BW1Aq2IMNmM+7jsg+szBKFQO40T0T2y5SVcq7DCnwmLMyasydco4vfvXSckW9kXN5bBePVUdODArtWD4zq+kmBVkNfyUcjpfQtbDHqJqFsTE07&cnc=false&pickupPointCode=PP-3527678&pid1=APF-70017-00207",
+    "attributes": [
+        {
+            "optionListingType": "COLOR_PALETE",
+            "values": [
+                "MULTICOLOR"
+            ],
+            "count": 4
+        }
+    ],
+    "productFeatures": "",
+    "storeClosingInfo": {
+        "storeClosed": false,
+        "endDate": 0,
+        "delayShipping": false
+    },
+    "promoBadgeUrl": "https://www.static-src.com/fs/asset/11_2024/tag-label-5c7514c115c8.png",
+    "promoEndTime": 1732121999000,
+    "debugData": {},
+    "campaignInfo": {
+        "name": "Flash Sale",
+        "code": "CAMP-02333_2736636"
+    },
+    "allCategories": [
+        "IP-1000002",
+        "54593",
+        "TA-1000003"
+    ],
+    "merchantVoucherCount": 0,
+    "expandedProducts": [],
+    "location": "Kab. Sidoarjo",
+    "numLocations": 5,
+    "badge": {
+        "merchantBadgeUrl": "https://www.static-src.com//siva/asset/07_2020/icon-top-rated-diamond.png",
+        "merchantBadge": "Diamond"
+    },
+    "size": [
+        ""
+    ],
+    "level0Id": "MTA-80677074",
+    "merchantName": "Blibli -  Apple Authorised Reseller ",
+    "soldRangeCount": {
+        "en": "590",
+        "id": "590"
+    },
+    "categoryIdHierarchy": [
+        "54593",
+        "TA-1000003",
+        "IP-1000002"
+    ],
+    "cartLogisticOptions": [],
+    "merchantVoucherMessage": "No voucher available",
+    "wholesaleMinQuantity": 0,
+    "wholesaleDiscountPercentage": 0,
+    "wholesaleDiscountParam": "MIN",
+    "pickupPointCode": "PP-3527678",
+    "categoryNameHierarchy": [
+        "Handphone & Tablet",
+        "Tablet",
+        "iPad"
+    ],
+    "freshnessDaysCount": 0,
+    "hasVariants": false,
+    "additionalProperties": {
+        "paymentPromoLabel": "Cicilan 0%",
+        "paymentPromoPerMonthValue": "Rp243 rb",
+        "showPaymentPromoPrice": "false"
+    },
+    "hasPalingTopBoostWithoutTag": false,
+    "trackerFields": {
+        "eligible_tags": "ZERO_PERCENT_INSTALLMENT,REGULAR,BLIBLI_SHIPPING,FLASH_SALE_CAMPAIGN,BEST_SELLING,TUKAR_TAMBAH,FREE_SHIPPING",
+        "is_vector_search_applied": "false"
+    },
+    "destinationPageType": "GADGET_AND_ELECTRONICS",
+    "addToCartEligible": false,
+    "official": true,
+    "preorder": false,
+    "buyable": true
+}

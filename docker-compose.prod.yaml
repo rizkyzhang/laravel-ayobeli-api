@@ -1,0 +1,9 @@
+services:
+  app:
+    environment:
+      DOPPLER_TOKEN: "${DOPPLER_TOKEN}"
+    volumes: [ ]
+  nginx:
+    volumes: [ ]
+    ports:
+      - "127.0.0.1:9001:80"

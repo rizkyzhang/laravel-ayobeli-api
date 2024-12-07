@@ -26,7 +26,7 @@ RUN docker-php-ext-install pdo_mysql pcntl bcmath
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 # Copy application files
-COPY . /var/www
+COPY ../../docker /var/www
 
 # Install PHP dependencies
 RUN composer install --no-dev --no-progress --optimize-autoloader --prefer-dist
@@ -57,8 +57,6 @@ RUN chown -R www:www /var/www/storage /var/www/bootstrap/cache
 # Change current user to www
 USER www
 
-RUN ls -a vendor
-
 # Expose port 9000 and start php-fpm server
 EXPOSE 9000
-CMD ["php-fpm"]
+CMD [ "doppler", "run", "--", "php-fpm"]

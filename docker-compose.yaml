@@ -1,0 +1,29 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: ./deployment/php/php.dockerfile
+    environment:
+      DOPPLER_TOKEN: "${DOPPLER_TOKEN}"
+    image: laravel-ci-cd
+    container_name: laravel-ci-cd
+    restart: always
+    networks:
+      - personal
+  nginx:
+    build:
+      context: .
+      dockerfile: ./deployment/nginx/nginx.dockerfile
+    image: laravel-ci-cd-nginx
+    container_name: laravel-ci-cd-nginx
+    restart: always
+    ports:
+      - "127.0.0.1:9001:80"
+    networks:
+      - personal
+    depends_on:
+      - app
+networks:
+  personal:
+    name: personal
+    external: true
