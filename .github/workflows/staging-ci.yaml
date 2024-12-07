@@ -1,0 +1,11 @@
+name: CI/CD Pipeline for Staging
+on:
+  push:
+    branches:
+      - develop
+jobs:
+  call-base-workflow:
+    uses: ./.github/workflows/base-ci.yaml
+    with:
+      environment: 'staging'
+    secrets: inherit  # Add this line to pass secrets

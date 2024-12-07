@@ -60,7 +60,7 @@ jobs:
         run: php artisan test || true
 
       - name: Deploy to ${{ inputs.environment }}
-        #        if: ${{ inputs.environment == 'staging' || inputs.environment == 'production' }}
+        if: ${{ inputs.environment == 'staging' || inputs.environment == 'production' }}
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.SERVER_HOST }}

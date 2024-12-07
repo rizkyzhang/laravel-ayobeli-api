@@ -1,0 +1,11 @@
+name: CI/CD Pipeline for Production
+on:
+  push:
+    branches:
+      - main
+jobs:
+  call-base-workflow:
+    uses: ./.github/workflows/base-ci.yaml
+    with:
+      environment: 'production'
+    secrets: inherit  # Add this line to pass secrets
