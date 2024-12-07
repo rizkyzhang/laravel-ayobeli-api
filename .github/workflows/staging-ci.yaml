@@ -8,4 +8,4 @@ jobs:
     uses: ./.github/workflows/base-ci.yaml
     with:
       environment: 'staging'
-    secrets: inherit  # Add this line to pass secrets
+#    secrets: inherit  # Add this line to pass secrets
