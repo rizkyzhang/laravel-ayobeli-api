@@ -26,7 +26,7 @@ RUN docker-php-ext-install pdo_mysql pcntl bcmath
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 # Copy application files
-COPY ../../docker /var/www
+COPY ../.. /var/www
 
 # Install PHP dependencies
 RUN composer install --no-dev --no-progress --optimize-autoloader --prefer-dist
