@@ -7,9 +7,6 @@ set -o pipefail
 # Echo commands before running them (optional, helpful for debugging)
 set -x
 
-git checkout main
-git pull origin main
-
 echo "Compose down"
 docker compose -f docker-compose.yaml -f docker-compose.prod.yaml down
 echo "Compose up"

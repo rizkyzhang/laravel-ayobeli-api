@@ -88,6 +88,8 @@ jobs:
                 ./deployment/deploy-to-staging.sh
             elif [[ "${{ inputs.environment }}" == "production" ]]; then
                 echo "Deploying to Production..."
+                git checkout main
+                git pull origin main
                 ./deployment/deploy-to-prod.sh
             else
                 echo "Unknown environment: ${{ inputs.environment }}"
