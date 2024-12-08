@@ -83,6 +83,8 @@ jobs:
             # Deploy based on environment
             if [[ "${{ inputs.environment }}" == "staging" ]]; then
                 echo "Deploying to Staging..."
+                git checkout develop
+                git pull origin develop
                 ./deployment/deploy-to-staging.sh
             elif [[ "${{ inputs.environment }}" == "production" ]]; then
                 echo "Deploying to Production..."
