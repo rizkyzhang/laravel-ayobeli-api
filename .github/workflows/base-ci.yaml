@@ -70,11 +70,24 @@ jobs:
           passphrase: ${{ secrets.SERVER_PASSPHRASE }}
           key: ${{ secrets.SERVER_KEY }}
           port: ${{ secrets.SERVER_PORT }}
+          script_stop: true  # Stop on errors
+          shell: /bin/bash   # Explicitly specify bash shell
           script: |
+            # Export environment variables
             export DOPPLER_TOKEN="${{ secrets.DOPPLER_STAGING_TOKEN }}"
             export DOCKER_CONTAINER_NAME="${{ secrets.DOCKER_CONTAINER_NAME }}"
 
-            cd Projects/personal/laravel-ci-cd
-            if [ "${{ inputs.environment }}" == "staging" ]; then
-              echo "Deploying to Staging..."
+            # Navigate to project directory
+            cd Projects/personal/laravel-ci-cd || exit 1
+
+            # Deploy based on environment
+            if [[ "${{ inputs.environment }}" == "staging" ]]; then
+                echo "Deploying to Staging..."
+                # Add your staging deployment commands here
+            elif [[ "${{ inputs.environment }}" == "production" ]]; then
+                echo "Deploying to Production..."
+                # Add your production deployment commands here
+            else
+                echo "Unknown environment: ${{ inputs.environment }}"
+                exit 1
             fi
