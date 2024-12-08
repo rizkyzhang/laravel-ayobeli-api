@@ -77,8 +77,3 @@ jobs:
             cd Projects/personal/laravel-ci-cd
             if [ "${{ inputs.environment }}" == "staging" ]; then
               echo "Deploying to Staging..."
-              ./deployment/deploy-to-staging.sh
-            elif [ "${{ inputs.environment }}" == "production" ]; then
-              echo "Deploying to Production..."
-              ./deployment/deploy-to-prod.sh
-            fi
