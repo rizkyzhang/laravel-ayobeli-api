@@ -83,10 +83,10 @@ jobs:
             # Deploy based on environment
             if [[ "${{ inputs.environment }}" == "staging" ]]; then
                 echo "Deploying to Staging..."
-                # Add your staging deployment commands here
+                ./deployment/deploy-to-staging.sh
             elif [[ "${{ inputs.environment }}" == "production" ]]; then
                 echo "Deploying to Production..."
-                # Add your production deployment commands here
+                ./deployment/deploy-to-prod.sh
             else
                 echo "Unknown environment: ${{ inputs.environment }}"
                 exit 1
