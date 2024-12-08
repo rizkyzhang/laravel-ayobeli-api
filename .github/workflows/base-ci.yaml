@@ -83,6 +83,7 @@ jobs:
             # Deploy based on environment
             if [[ "${{ inputs.environment }}" == "staging" ]]; then
                 echo "Deploying to Staging..."
+                chmod +x ./deployment/deploy-to-staging.sh
                 ./deployment/deploy-to-staging.sh
             elif [[ "${{ inputs.environment }}" == "production" ]]; then
                 echo "Deploying to Production..."
