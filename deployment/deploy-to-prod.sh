@@ -11,9 +11,9 @@ git checkout main
 git pull origin main
 
 echo "Compose down"
-docker compose -f docker-compose.prod.yaml down
+docker compose -f docker-compose.yaml -f docker-compose.prod.yaml down
 echo "Compose up"
-docker compose -f docker-compose.prod.yaml up --build -d --remove-orphans
+docker compose -f docker-compose.yaml -f docker-compose.prod.yaml up --build -d --remove-orphans
 echo "Run migrations"
 docker exec $DOCKER_CONTAINER_NAME php artisan migrate
 echo "Optimize application"
