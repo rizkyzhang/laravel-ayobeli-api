@@ -12,6 +12,7 @@ git pull origin develop
 
 #echo "Compose down"
 #docker compose -f docker-compose.yaml -f docker-compose.stg.yaml down
+ls -a
 echo "Compose up"
 docker compose up --build -d
 #docker compose -f docker-compose.yaml -f docker-compose.stg.yaml up --build -d --remove-orphans
