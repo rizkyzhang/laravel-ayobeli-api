@@ -59,4 +59,9 @@ USER www
 
 # Expose port 9000 and start php-fpm server
 EXPOSE 9000
-CMD [ "doppler", "run", "--", "php-fpm"]
+#CMD [ "doppler", "run", "--", "php-fpm"]
+
+COPY ./deployment/php/php-docker-entrypoint.sh /usr/local/bin/
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh
+
+ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
