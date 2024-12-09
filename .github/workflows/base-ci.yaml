@@ -85,12 +85,12 @@ jobs:
                 echo "Deploying to Staging..."
                 git checkout develop
                 git pull origin develop
-                ./deployment/deploy-to-staging.sh
+                doppler run -- ./deployment/deploy-to-staging.sh
             elif [[ "${{ inputs.environment }}" == "production" ]]; then
                 echo "Deploying to Production..."
                 git checkout main
                 git pull origin main
-                ./deployment/deploy-to-prod.sh
+                doppler run -- ./deployment/deploy-to-prod.sh
             else
                 echo "Unknown environment: ${{ inputs.environment }}"
                 exit 1
