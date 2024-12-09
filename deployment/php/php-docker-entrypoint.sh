@@ -18,6 +18,8 @@ php artisan route:clear
 php artisan cache:clear
 php artisan view:clear
 
+php artisan tinker --execute="echo json_encode(config('database.connections'), JSON_PRETTY_PRINT);"
+
 echo "🔄 Running migrations..."
 php artisan migrate --force
 
