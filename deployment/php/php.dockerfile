@@ -11,7 +11,7 @@ RUN apt-get update && apt-get install -y \
     ca-certificates \
     curl \
     gnupg \
-    netcat \
+    netcat-openbsd \
     unzip \
     zip
 
