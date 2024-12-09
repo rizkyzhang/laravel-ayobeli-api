@@ -11,6 +11,7 @@ echo "Compose down"
 docker compose -f docker-compose.yaml -f docker-compose.stg.yaml down
 echo "Compose up"
 docker compose -f docker-compose.yaml -f docker-compose.stg.yaml up --build -d --remove-orphans
+echo "APP_ENV $APP_ENV"
 echo "Run migrations"
 docker exec $DOCKER_CONTAINER_NAME php artisan migrate --force
 echo "Optimize application"
