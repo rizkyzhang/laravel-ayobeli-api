@@ -18,8 +18,6 @@ php artisan route:clear
 php artisan cache:clear
 php artisan view:clear
 
-echo "DB_CONNECTION: $DB_CONNECTION"
-echo "DB_USERNAME: $DB_USERNAME"
 echo "🔄 Running migrations..."
 php artisan migrate --force
 
