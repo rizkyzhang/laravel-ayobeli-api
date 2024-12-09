@@ -19,7 +19,7 @@ php artisan cache:clear
 php artisan view:clear
 
 echo "🔄 Running migrations..."
-doppler run -- php artisan migrate --force
+php artisan migrate --force --database=mysql
 
 echo "🚀 Starting php-fpm..."
 exec php-fpm
