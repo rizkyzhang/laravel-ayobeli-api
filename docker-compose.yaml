@@ -3,12 +3,9 @@ services:
     build:
       context: .
       dockerfile: ./deployment/php/php.dockerfile
-    environment:
-      DOPPLER_TOKEN: "${DOPPLER_TOKEN}"
     image: laravel-ci-cd
     container_name: laravel-ci-cd
     restart: always
-    volumes: [ ]
     networks:
       - personal
   nginx:
@@ -18,7 +15,6 @@ services:
     image: laravel-ci-cd-nginx
     container_name: laravel-ci-cd-nginx
     restart: always
-    volumes: [ ]
     ports:
       - "127.0.0.1:9000:80"
     networks:

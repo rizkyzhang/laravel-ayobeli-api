@@ -7,12 +7,11 @@ set -o pipefail
 # Echo commands before running them (optional, helpful for debugging)
 set -x
 
-#echo "Compose down"
-#docker compose -f docker-compose.yaml -f docker-compose.stg.yaml down
-#echo "Compose up"
-docker compose up --build -d --remove-orphans
-#docker compose -f docker-compose.yaml -f docker-compose.stg.yaml up --build -d --remove-orphans
-#echo "Run migrations"
-#docker exec $DOCKER_CONTAINER_NAME php artisan migrate
-#echo "Optimize application"
-#docker exec $DOCKER_CONTAINER_NAME php artisan config:cache && php artisan route:cache && php artisan view:cache && php artisan optimize
+echo "Compose down"
+docker compose -f docker-compose.yaml -f docker-compose.stg.yaml down
+echo "Compose up"
+docker compose -f docker-compose.yaml -f docker-compose.stg.yaml up --build -d --remove-orphans
+echo "Run migrations"
+docker exec $DOCKER_CONTAINER_NAME php artisan migrate
+echo "Optimize application"
+docker exec $DOCKER_CONTAINER_NAME php artisan config:cache && php artisan route:cache && php artisan view:cache && php artisan optimize
