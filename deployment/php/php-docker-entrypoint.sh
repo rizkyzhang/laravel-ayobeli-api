@@ -3,7 +3,7 @@ set -e
 
 # Get DB details from Doppler first
 echo "🔍 Getting database details from Doppler..."
-eval $(doppler secrets download --format env --no-file | grep DB_)
+eval $(doppler secrets download --format env --no-file)
 
 # Now we can use DB_HOST and DB_PORT from Doppler
 echo "🔄 Waiting for database at $DB_HOST:$DB_PORT..."
