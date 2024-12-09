@@ -12,11 +12,11 @@ while ! nc -z $DB_HOST $DB_PORT; do
   echo "Still waiting for database..."
 done
 
-echo "✨ Clearing Laravel caches..."
-php artisan config:clear
-php artisan route:clear
-php artisan cache:clear
-php artisan view:clear
+#echo "✨ Clearing Laravel caches..."
+#php artisan config:clear
+#php artisan route:clear
+#php artisan cache:clear
+#php artisan view:clear
 
 echo "🔄 Running migrations..."
 php artisan migrate --force --database=mysql
