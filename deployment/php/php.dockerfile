@@ -62,6 +62,6 @@ EXPOSE 9000
 #CMD [ "doppler", "run", "--", "php-fpm"]
 
 COPY ./deployment/php/php-docker-entrypoint.sh /usr/local/bin/
-RUN chmod +x /usr/local/bin/php-docker-entrypoint.sh
+RUN sudo chmod +x /usr/local/bin/php-docker-entrypoint.sh
 
 ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
