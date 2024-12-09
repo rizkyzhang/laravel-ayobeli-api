@@ -62,4 +62,4 @@ EXPOSE 9000
 
 COPY --chmod=0755 ./deployment/php/php-docker-entrypoint.sh /usr/local/bin/
 
-ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
+ENTRYPOINT ["/usr/local/bin/php-docker-entrypoint.sh"]
