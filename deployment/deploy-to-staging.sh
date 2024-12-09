@@ -12,6 +12,6 @@ docker compose -f docker-compose.yaml -f docker-compose.stg.yaml down
 echo "Compose up"
 docker compose -f docker-compose.yaml -f docker-compose.stg.yaml up --build -d --remove-orphans
 echo "Run migrations"
-docker exec $DOCKER_CONTAINER_NAME php artisan migrate
+docker exec $DOCKER_CONTAINER_NAME php artisan migrate --force
 echo "Optimize application"
 docker exec $DOCKER_CONTAINER_NAME php artisan config:cache && php artisan route:cache && php artisan view:cache && php artisan optimize
