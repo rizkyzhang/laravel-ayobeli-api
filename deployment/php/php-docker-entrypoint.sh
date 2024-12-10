@@ -19,7 +19,7 @@ done
 #php artisan view:clear
 
 echo "🔄 Running migrations..."
-php artisan migrate --force
+doppler run -- php artisan migrate --force
 
 echo "🚀 Starting php-fpm..."
 exec php-fpm
