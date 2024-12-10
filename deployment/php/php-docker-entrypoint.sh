@@ -12,8 +12,6 @@ while ! nc -z $DB_HOST $DB_PORT; do
   echo "Still waiting for database..."
 done
 
-ping $DB_HOST
-
 #echo "✨ Clearing Laravel caches..."
 #php artisan config:clear
 #php artisan route:clear
