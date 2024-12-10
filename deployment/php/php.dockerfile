@@ -11,8 +11,10 @@ RUN apt-get update && apt-get install -y \
     ca-certificates \
     curl \
     gnupg \
+    iputils-ping \
     netcat-openbsd \
     unzip \
+    telnet \
     zip
 
 # Setup Doppler CLI
