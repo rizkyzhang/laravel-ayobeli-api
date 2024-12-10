@@ -49,14 +49,14 @@ RUN composer install --no-dev --no-progress --optimize-autoloader --prefer-dist
 #COPY --from=build /var/www /var/www
 
 # Set working directory
-RUN groupadd -g 1000 www
-RUN useradd -u 1000 -ms /bin/bash -g www www
-
-# Change ownership of storage and bootstrap/cache directories
-RUN chown -R www:www /var/www/storage /var/www/bootstrap/cache
-
-# Change current user to www
-USER www
+#RUN groupadd -g 1000 www
+#RUN useradd -u 1000 -ms /bin/bash -g www www
+#
+## Change ownership of storage and bootstrap/cache directories
+#RUN chown -R www:www /var/www/storage /var/www/bootstrap/cache
+#
+## Change current user to www
+#USER www
 
 # Expose port 9000 and start php-fpm server
 EXPOSE 9000
