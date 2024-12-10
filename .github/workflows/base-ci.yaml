@@ -74,8 +74,8 @@ jobs:
           shell: /bin/bash   # Explicitly specify bash shell
           script: |
             # Export environment variables
-            export DOPPLER_TOKEN="${{ secrets.DOPPLER_STAGING_TOKEN }}"
-            export DOCKER_CONTAINER_NAME="${{ secrets.DOCKER_CONTAINER_NAME }}"
+            export DOPPLER_STAGING_TOKEN="${{ secrets.DOPPLER_STAGING_TOKEN }}"
+            export DOPPLER_PROD_TOKEN="${{ secrets.DOPPLER_PROD_TOKEN }}"
 
             # Navigate to project directory
             cd Projects/personal/laravel-ci-cd || exit 1
@@ -85,12 +85,18 @@ jobs:
                 echo "Deploying to Staging..."
                 git checkout develop
                 git pull origin develop
-                doppler run -- ./deployment/deploy-to-staging.sh
+                echo "Compose down"
+                docker compose -f docker-compose.yaml -f docker-compose.stg.yaml down
+                echo "Compose up"
+                docker compose -f docker-compose.yaml -f docker-compose.stg.yaml up --build -d --remove-orphans
             elif [[ "${{ inputs.environment }}" == "production" ]]; then
                 echo "Deploying to Production..."
                 git checkout main
                 git pull origin main
-                doppler run -- ./deployment/deploy-to-prod.sh
+                echo "Compose down"
+                docker compose -f docker-compose.yaml -f docker-compose.prod.yaml down
+                echo "Compose up"
+                docker compose -f docker-compose.yaml -f docker-compose.prod.yaml up --build -d --remove-orphans
             else
                 echo "Unknown environment: ${{ inputs.environment }}"
                 exit 1

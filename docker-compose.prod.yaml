@@ -1,7 +1,7 @@
 services:
   app:
     environment:
-      DOPPLER_TOKEN: "${DOPPLER_TOKEN}"
+      DOPPLER_TOKEN: "${DOPPLER_PROD_TOKEN}"
     volumes: [ ]
   nginx:
     volumes: [ ]
