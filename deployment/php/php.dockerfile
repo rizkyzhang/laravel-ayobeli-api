@@ -11,10 +11,8 @@ RUN apt-get update && apt-get install -y \
     ca-certificates \
     curl \
     gnupg \
-    iputils-ping \
     netcat-openbsd \
     unzip \
-    telnet \
     zip
 
 # Setup Doppler CLI
@@ -60,9 +58,7 @@ RUN chown -R www:www /var/www/storage /var/www/bootstrap/cache
 # Change current user to www
 USER www
 
-RUN doppler run -- php artisan migrate --force
-RUN php artisan config:clear & php artisan route:clear & php artisan view:clear & php artisan optimize
-
 # Expose port 9000 and start php-fpm server
 EXPOSE 9000
-CMD ["doppler run", "--", "php-fpm"]
+COPY --chmod=0755 ./deployment/php/php-docker-entrypoint.sh /usr/local/bin/
+ENTRYPOINT ["/usr/local/bin/php-docker-entrypoint.sh"]
