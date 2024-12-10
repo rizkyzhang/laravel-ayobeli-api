@@ -74,24 +74,4 @@ jobs:
           shell: /bin/bash   # Explicitly specify bash shell
           script: |
             # Export environment variables
-            export DOPPLER_TOKEN="${{ secrets.DOPPLER_STAGING_TOKEN }}"
-            export DOCKER_CONTAINER_NAME="${{ secrets.DOCKER_CONTAINER_NAME }}"
-
-            # Navigate to project directory
-            cd Projects/personal/laravel-ci-cd || exit 1
-
-            # Deploy based on environment
-            if [[ "${{ inputs.environment }}" == "staging" ]]; then
-                echo "Deploying to Staging..."
-                git checkout develop
-                git pull origin develop
-                doppler run -- ./deployment/deploy-to-staging.sh
-            elif [[ "${{ inputs.environment }}" == "production" ]]; then
-                echo "Deploying to Production..."
-                git checkout main
-                git pull origin main
-                doppler run -- ./deployment/deploy-to-prod.sh
-            else
-                echo "Unknown environment: ${{ inputs.environment }}"
-                exit 1
-            fi
+            echo "Tester"
