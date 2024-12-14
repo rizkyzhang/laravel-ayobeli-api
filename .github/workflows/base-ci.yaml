@@ -68,7 +68,7 @@ jobs:
         uses: dopplerhq/cli-action@v2
 
       - name: Run tests
-        run: doppler run -- php artisan test || true
+        run: doppler run --preserve-env="^(?!DB_)" -- php artisan test || true
 
       - name: Deploy to ${{ inputs.environment }}
         if: ${{ inputs.environment == 'staging' || inputs.environment == 'production' }}
