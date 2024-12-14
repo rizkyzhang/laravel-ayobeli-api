@@ -6,6 +6,8 @@ services:
     image: laravel-ci-cd
     container_name: laravel-ci-cd
     restart: always
+    environment:
+      - TZ=Asia/Jakarta
     networks:
       - personal
   nginx:
@@ -15,6 +17,8 @@ services:
     image: laravel-ci-cd-nginx
     container_name: laravel-ci-cd-nginx
     restart: always
+    environment:
+      - TZ=Asia/Jakarta
     ports:
       - "127.0.0.1:9000:80"
     networks:
