@@ -3,7 +3,7 @@ set -e
 
 echo "🔄 Running migrations..."
 if [[ $APP_ENV -ne "local" ]]; then
-    doppler run -- php artisan migrate --force
+#    doppler run -- php artisan migrate --force
 
     echo "✨ Clearing Laravel caches and optimizing..."
 #    php artisan optimize
