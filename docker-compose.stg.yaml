@@ -1,6 +1,7 @@
 services:
   app:
     environment:
+      APP_ENV: "staging"
       DOPPLER_TOKEN: "${DOPPLER_STAGING_TOKEN}"
     volumes: [ ]
   nginx:
