@@ -1,10 +1,10 @@
 services:
-  app:
+  laravel-ci-cd-app:
     environment:
       APP_ENV: "production"
       DOPPLER_TOKEN: "${DOPPLER_PROD_TOKEN}"
     volumes: [ ]
-  nginx:
+  laravel-ci-cd-nginx:
     volumes: [ ]
     ports:
       - "127.0.0.1:9001:80"

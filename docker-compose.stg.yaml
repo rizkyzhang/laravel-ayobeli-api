@@ -1,8 +1,8 @@
 services:
-  app:
+  laravel-ci-cd-app:
     environment:
       APP_ENV: "staging"
       DOPPLER_TOKEN: "${DOPPLER_STAGING_TOKEN}"
     volumes: [ ]
-  nginx:
+  laravel-ci-cd-nginx:
     volumes: [ ]
