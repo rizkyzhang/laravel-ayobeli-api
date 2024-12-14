@@ -68,7 +68,7 @@ jobs:
         uses: dopplerhq/cli-action@v2
 
       - name: Run tests
-        run: doppler run --preserve-env -- php artisan test || true
+        run: doppler run --preserve-env="^DB_" -- php artisan test || true
 
       - name: Deploy to ${{ inputs.environment }}
         if: ${{ inputs.environment == 'staging' || inputs.environment == 'production' }}
@@ -79,8 +79,6 @@ jobs:
           passphrase: ${{ secrets.SERVER_PASSPHRASE }}
           key: ${{ secrets.SERVER_KEY }}
           port: ${{ secrets.SERVER_PORT }}
-          script_stop: true  # Stop on errors
-          shell: /bin/bash   # Explicitly specify bash shell
           script: |
             # Export environment variables
             export DOPPLER_STAGING_TOKEN="${{ secrets.DOPPLER_STAGING_TOKEN }}"
