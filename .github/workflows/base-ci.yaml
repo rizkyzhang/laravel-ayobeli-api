@@ -48,20 +48,23 @@ jobs:
       - name: Install Composer dependencies
         run: composer install --no-progress --optimize-autoloader
 
-      - name: Generate application key
-        run: php artisan key:generate
-
       - name: Wait for MySQL to be ready
         run: sudo apt-get install -y netcat-openbsd && while ! nc -z localhost 3306; do sleep 1; done
 
       - name: Install Doppler CLI
         uses: dopplerhq/cli-action@v2
 
+      - name: Setup Environment Variables
+        run: doppler secrets download --no-file --format env > .env
+
+      - name: Generate application key
+        run: php artisan key:generate
+
       - name: Run database migrations
-        run: doppler run -- php artisan migrate
+        run: php artisan migrate
 
       - name: Run tests
-        run: doppler run -- php artisan test || true
+        run: php artisan test || true
 
       - name: Deploy to ${{ inputs.environment }}
         if: ${{ inputs.environment == 'staging' || inputs.environment == 'production' }}
