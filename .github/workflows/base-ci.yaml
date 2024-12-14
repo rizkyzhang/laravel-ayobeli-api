@@ -67,16 +67,17 @@ jobs:
       - name: Install Doppler CLI
         uses: dopplerhq/cli-action@v2
 
-      - name: Run tests
+      - name: Run
         run: |
-          doppler run --preserve-env="^DB_" -- bash -c '
           sed -i "s|DB_CONNECTION=.*|DB_CONNECTION=mysql|" .env
           sed -i "s|DB_HOST=.*|DB_HOST=localhost|" .env
           sed -i "s|DB_PORT=.*|DB_PORT=3306|" .env
           sed -i "s|DB_DATABASE=.*|DB_DATABASE=laravel_ci_cd_test|" .env
           sed -i "s|DB_USERNAME=.*|DB_USERNAME=root|" .env
           sed -i "s|DB_PASSWORD=.*|DB_PASSWORD=root|" .env
-          ' -- php artisan test || true
+
+      - name: Run tests
+        run: doppler run --preserve-env="^DB_" -- php artisan test
 
       - name: Deploy to ${{ inputs.environment }}
         if: ${{ inputs.environment == 'staging' || inputs.environment == 'production' }}
