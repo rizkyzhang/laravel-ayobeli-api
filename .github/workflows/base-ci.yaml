@@ -23,6 +23,12 @@ jobs:
           --health-interval=10s
           --health-timeout=5s
           --health-retries=3
+    env:
+      DOPPLER_TOKEN: ${{
+        inputs.environment == 'production'
+        && secrets.DOPPLER_PROD_TOKEN
+        || secrets.DOPPLER_STAGING_TOKEN
+        }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -58,14 +64,11 @@ jobs:
       - name: Run database migrations
         run: php artisan migrate
 
+      - name: Install Doppler CLI
+        uses: dopplerhq/cli-action@v2
+
       - name: Run tests
-        env:
-          DOPPLER_TOKEN: ${{
-            inputs.environment == 'production'
-            && secrets.DOPPLER_PROD_TOKEN
-            || secrets.DOPPLER_STAGING_TOKEN
-            }}
-        run: php artisan test || true
+        run: doppler run -- php artisan test || true
 
       - name: Deploy to ${{ inputs.environment }}
         if: ${{ inputs.environment == 'staging' || inputs.environment == 'production' }}
