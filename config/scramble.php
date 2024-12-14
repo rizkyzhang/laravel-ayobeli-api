@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Middleware\RestrictApiDocsAccess;
+
 return [
     /*
      * Your API path. By default, all routes starting with this path will be added to the docs.
@@ -78,7 +80,7 @@ return [
 
     'middleware' => [
         'web',
-//        RestrictApiDocsAccess::class
+        RestrictApiDocsAccess::class
     ],
 
     'extensions' => [],
