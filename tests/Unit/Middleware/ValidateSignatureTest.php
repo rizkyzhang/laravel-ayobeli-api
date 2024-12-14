@@ -18,8 +18,8 @@ class ValidateSignatureTest extends TestCase
 
     public function test_validate_signature_success()
     {
-        $serverPublicKey = base64_decode(getenv('SERVER_PUBLIC_KEY'));
-        $clientPrivateKey = base64_decode(getenv('CLIENT_PRIVATE_KEY'));
+        $serverPublicKey = base64_decode(config('signature.server_public_key'));
+        $clientPrivateKey = base64_decode(config('signature.client_private_key'));
 
         $timestamp = now()->timestamp;
         $method = $this->request->method();

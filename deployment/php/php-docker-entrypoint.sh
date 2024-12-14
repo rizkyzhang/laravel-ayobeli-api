@@ -4,20 +4,15 @@ set -e
 echo "🔄 Running migrations..."
 if [[ $APP_ENV -ne "local" ]]; then
     doppler run -- php artisan migrate --force
-else
-    php artisan migrate
-fi
 
+    echo "✨ Clearing Laravel caches and optimizing..."
+    php artisan optimize
 
-echo "✨ Clearing Laravel caches and optimizing..."
-php artisan config:clear
-php artisan route:clear
-php artisan view:clear
-php artisan optimize
-
-echo "🚀 Starting php-fpm..."
-if [[ $APP_ENV -ne "local" ]]; then
+    echo "🚀 Starting php-fpm..."
     exec doppler run -- php-fpm
 else
+    php artisan migrate
+
+    echo "🚀 Starting php-fpm..."
     exec php-fpm
 fi

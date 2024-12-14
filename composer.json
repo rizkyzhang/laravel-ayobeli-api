@@ -10,6 +10,7 @@
     "require": {
         "php": "^8.2",
         "ext-sodium": "*",
+        "dedoc/scramble": "^0.11.12",
         "guzzlehttp/guzzle": "^7.8",
         "laravel/framework": "^11.0",
         "laravel/sanctum": "^4.0",
@@ -54,6 +55,12 @@
             "@php artisan key:generate --ansi",
             "@php -r \"file_exists('database/database.sqlite') || touch('database/database.sqlite');\"",
             "@php artisan migrate --graceful --ansi"
+        ],
+        "test": [
+            "php artisan test"
+        ],
+        "test:coverage": [
+            "php artisan test --coverage"
         ]
     },
     "extra": {

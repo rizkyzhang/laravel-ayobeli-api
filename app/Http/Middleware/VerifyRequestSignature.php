@@ -24,8 +24,8 @@ class VerifyRequestSignature
         // Combine timestamp, method, URL, and body
         $message = $timestamp . $method . $url . $requestBodyString;
 
-        $clientPublicKey = base64_decode(getenv('CLIENT_PUBLIC_KEY'));
-        $serverPrivateKey = base64_decode(getenv('SERVER_PRIVATE_KEY'));
+        $clientPublicKey = base64_decode(config('signature.client_public_key'));
+        $serverPrivateKey = base64_decode(config('signature.server_private_key'));
         try {
             $sharedSecret = sodium_crypto_scalarmult($serverPrivateKey, $clientPublicKey);
         } catch (SodiumException $e) {
