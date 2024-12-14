@@ -53,7 +53,7 @@ jobs:
         run: php artisan key:generate
 
       - name: Wait for MySQL to be ready
-        run: sudo apt-get install -y netcat && while ! nc -z localhost 3306; do sleep 1; done
+        run: sudo apt-get install -y netcat-openbsd && while ! nc -z localhost 3306; do sleep 1; done
 
       - name: Run database migrations
         run: php artisan migrate
