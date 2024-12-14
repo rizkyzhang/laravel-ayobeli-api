@@ -1,5 +1,5 @@
 services:
-  app:
+  laravel-ci-cd-app:
     build:
       context: .
       dockerfile: ./deployment/php/php.dockerfile
@@ -10,7 +10,7 @@ services:
       - TZ=Asia/Jakarta
     networks:
       - personal
-  nginx:
+  laravel-ci-cd-nginx:
     build:
       context: .
       dockerfile: ./deployment/nginx/nginx.dockerfile
