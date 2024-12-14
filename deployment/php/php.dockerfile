@@ -1,4 +1,4 @@
-# Stage 1: Build the application
+## Stage 1: Build the application
 FROM php:8.2-fpm AS build
 
 # Set working directory
@@ -32,20 +32,20 @@ COPY . /var/www
 RUN composer install --no-dev --no-progress --optimize-autoloader --prefer-dist
 
 ## Stage 2: Create the final image
-#FROM php:8.2-fpm
-#
-## Set working directory
-#WORKDIR /var/www
-#
-## Copy Doppler binary from the build stage
-#COPY --from=build /usr/bin/doppler /usr/bin/doppler
-#
-## Copy PHP extensions from the build stage
-#COPY --from=build /usr/local/lib/php/extensions /usr/local/lib/php/extensions
-#COPY --from=build /usr/local/etc/php/conf.d /usr/local/etc/php/conf.d
-#
-## Copy application files from the build stage
-#COPY --from=build /var/www /var/www
+FROM php:8.2-fpm
+
+# Set working directory
+WORKDIR /var/www
+
+# Copy Doppler binary from the build stage
+COPY --from=build /usr/bin/doppler /usr/bin/doppler
+
+# Copy PHP extensions from the build stage
+COPY --from=build /usr/local/lib/php/extensions /usr/local/lib/php/extensions
+COPY --from=build /usr/local/etc/php/conf.d /usr/local/etc/php/conf.d
+
+# Copy application files from the build stage
+COPY --from=build /var/www /var/www
 
 # Create user and group www
 RUN groupadd -g 1000 www
