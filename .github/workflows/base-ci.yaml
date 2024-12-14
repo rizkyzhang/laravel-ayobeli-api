@@ -68,8 +68,16 @@ jobs:
         uses: dopplerhq/cli-action@v2
 
       - name: Run tests
-        run: doppler run --preserve-env="^DB_" -- php artisan test || true
-
+        run: |
+          doppler run --preserve-env="^DB_" -- bash -c '
+          sed -i "s|DB_CONNECTION=.*|DB_CONNECTION=mysql|" .env
+          sed -i "s|DB_HOST=.*|DB_HOST=localhost|" .env
+          sed -i "s|DB_PORT=.*|DB_PORT=3306|" .env
+          sed -i "s|DB_DATABASE=.*|DB_DATABASE=laravel_ci_cd_test|" .env
+          sed -i "s|DB_USERNAME=.*|DB_USERNAME=root|" .env
+          sed -i "s|DB_PASSWORD=.*|DB_PASSWORD=root|" .env
+          '
+      
       - name: Deploy to ${{ inputs.environment }}
         if: ${{ inputs.environment == 'staging' || inputs.environment == 'production' }}
         uses: appleboy/ssh-action@master
