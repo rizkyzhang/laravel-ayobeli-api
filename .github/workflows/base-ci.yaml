@@ -15,7 +15,7 @@ jobs:
         image: mysql:8.4
         env:
           MYSQL_ROOT_PASSWORD: root
-          MYSQL_DATABASE: laravel_api_test
+          MYSQL_DATABASE: laravel_ci_cd_test
         ports:
           - 3306:3306
         options: >-
@@ -59,6 +59,12 @@ jobs:
         run: php artisan migrate
 
       - name: Run tests
+        env:
+          DOPPLER_TOKEN: ${{
+            inputs.environment == 'production'
+            && secrets.DOPPLER_PROD_TOKEN
+            || secrets.DOPPLER_STAGING_TOKEN
+            }}
         run: php artisan test || true
 
       - name: Deploy to ${{ inputs.environment }}
