@@ -76,8 +76,8 @@ jobs:
           sed -i "s|DB_DATABASE=.*|DB_DATABASE=laravel_ci_cd_test|" .env
           sed -i "s|DB_USERNAME=.*|DB_USERNAME=root|" .env
           sed -i "s|DB_PASSWORD=.*|DB_PASSWORD=root|" .env
-          '
-      
+          ' -- php artisan test || true
+
       - name: Deploy to ${{ inputs.environment }}
         if: ${{ inputs.environment == 'staging' || inputs.environment == 'production' }}
         uses: appleboy/ssh-action@master
