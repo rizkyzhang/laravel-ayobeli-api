@@ -24,7 +24,7 @@ services:
     networks:
       - personal
     depends_on:
-      - app
+      - laravel-ci-cd-app
 networks:
   personal:
     name: personal
